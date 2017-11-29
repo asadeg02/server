@@ -31,9 +31,9 @@ internals.applyRoutes = function (server, next) {
       const page = Math.ceil(Number(request.query.start) / limit) + 1;
       const fields = request.query.fields;
 
-      const query = {
+      /*const query = {
         bodyFrames: { $regex: request.query['search[value]'].toLowerCase() }
-      };
+      };*/
 
       RefExercise.pagedFind({}, fields, sort, limit, page, (err, results) => {
 

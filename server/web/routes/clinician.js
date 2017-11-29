@@ -6,19 +6,18 @@ internals.applyRoutes = function (server, next) {
 
   server.route({
     method: 'GET',
-    path: '/backups',
+    path: '/clinician',
     config: {
       auth: {
-        strategy: 'session',
-        scope: ['root', 'admin']
+        strategy: 'session'
       }
     },
     handler: function (request, reply) {
 
-      return reply.view('backups/index', {
+      return reply.view('clinician/index', {
         user: request.auth.credentials.user,
         projectName: Config.get('/projectName'),
-        title: 'Backups',
+        title: 'Clinician',
         baseUrl: Config.get('/baseUrl')
       });
     }
@@ -36,6 +35,6 @@ exports.register = function (server, options, next) {
 };
 
 exports.register.attributes = {
-  name: 'backupList',
+  name: 'ClinicianList',
   dependencies: 'visionary'
 };
